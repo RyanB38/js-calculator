@@ -5,7 +5,7 @@ calculator = {
     total: 0
 };
 function add(a, b){
-    return add(a, b);
+    return a + b;
 }
 function subtract(a, b){
     return a-b;
@@ -23,6 +23,8 @@ function displayNumbers(num){
     display.textContent = display.textContent.concat(num);
 }
 function doOperation(num1, num2, operator){
+    num1 = Number(num1);
+    num2 = Number(num2);
     if(operator == "+"){
         return add(num1, num2);
     }else if(operator == "-"){
@@ -42,7 +44,19 @@ numberKeys.forEach((button) =>{
         console.log(display.textContent);
     })
 })
-const operations = document.querySelectorAll(".buttons > .operations");
+const operations = document.querySelectorAll(".buttons > .operation");
 operations.forEach((button) => {
-    button.addEventListener
+    button.addEventListener('click', () => {
+        if(calculator.operator == ""){
+            calculator.num1 = display.textContent;
+            calculator.operator = button.textContent.trim();
+            display.textContent = "";
+            console.log(calculator.num1 + calculator.operator);
+        }else if(calculator.operator != ""){
+            calculator.num2 = display.textContent;
+            console.log(calculator.num1 + calculator.operator + calculator.num2);
+            calculator.total = doOperation(calculator.num1, calculator.num2, calculator.operator);
+            display.textContent = calculator.total;
+        }
+    })
 })
