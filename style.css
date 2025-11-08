@@ -1,0 +1,50 @@
+.number-pad{
+    flex: 0 0 306px;
+    display: flex;
+    height: 306px;
+    width: 306px;
+    flex-wrap: wrap;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+}
+.display{
+    height: 100px;
+    width: 400px;
+    border: 1px;
+    border-style: solid ;
+    text-align: right;
+    display: flex;
+    justify-content: end;
+}
+.display > h1 {
+    margin-right: 20px;
+    align-self: center;
+}
+
+.number-pad > div {
+    height: 100px;
+    flex: 1 0 100px;
+    border: 1px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+}
+.number-pad > div > h1 {
+    align-self: center;
+}
+.panel{
+    display: flex;
+}
+.operations{
+    flex: 0 0 100px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.operations > div{
+    flex: 0 0 60px;
+    border: 1px;
+    border-style: solid;
+}
