@@ -20,7 +20,7 @@ function divide(a, b){
     return a / b;
 }
 function displayNumbers(num){
-    display.textContent = display.textContent + num;
+    display.textContent = display.textContent.concat(num);
 }
 function doOperation(num1, num2, operator){
     if(operator == "+"){
@@ -38,7 +38,7 @@ const display = document.querySelector(".display > h1");
 const numberKeys = document.querySelectorAll(".buttons > .number");
 numberKeys.forEach((button) =>{
     button.addEventListener("click", () => {
-        displayNumbers(button.textContent);
+        displayNumbers(button.textContent.trim());
         console.log(display.textContent);
     })
 })
