@@ -36,6 +36,7 @@
 }
 .panel{
     display: flex;
+    height: 306px;
 }
 .operations{
     flex: 0 0 100px;
