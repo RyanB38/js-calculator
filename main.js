@@ -2,7 +2,7 @@ calculator = {
     num1: 0,
     num2: 0,
     operator: "",
-    total: 0
+    total: ""
 };
 function add(a, b){
     return a + b;
@@ -21,6 +21,12 @@ function divide(a, b){
 }
 function displayNumbers(num){
     display.textContent = display.textContent.concat(num);
+}
+function clearCalculator(){
+    calculator.num1 = 0;
+    calculator.num2 = 0;
+    calculator.operator = "";
+    calculator.total = 0;
 }
 function doOperation(num1, num2, operator){
     num1 = Number(num1);
@@ -51,12 +57,15 @@ operations.forEach((button) => {
             calculator.num1 = display.textContent;
             calculator.operator = button.textContent.trim();
             display.textContent = "";
-            console.log(calculator.num1 + calculator.operator);
-        }else if(calculator.operator != ""){
+        }else if(calculator.operator != "" && button.textContent.trim() == "="){
             calculator.num2 = display.textContent;
-            console.log(calculator.num1 + calculator.operator + calculator.num2);
             calculator.total = doOperation(calculator.num1, calculator.num2, calculator.operator);
             display.textContent = calculator.total;
         }
     })
+})
+const allClear = document.querySelector(".buttons > .clear");
+allClear.addEventListener('click', () => {
+    display.textContent = "";
+    clearCalculator();
 })
