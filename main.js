@@ -52,6 +52,10 @@ numberKeys.forEach((button) =>{
             clearCalculator();
             display.textContent = ""
             displayNumbers(button.textContent.trim());
+        }else if(calculator.total != ""){
+            calculator.num1 = calculator.total;
+            display.textContent = "";
+            displayNumbers(button.textContent.trim());
         }
 
     })
@@ -68,6 +72,12 @@ operations.forEach((button) => {
             calculator.total = doOperation(calculator.num1, calculator.num2, calculator.operator);
             display.textContent = calculator.total;
             calculator.operator = "="
+        }else if(calculator.operator != ""){
+            calculator.num2 = display.textContent;
+            calculator.total = doOperation(calculator.num1, calculator.num2, calculator.operator);
+            display.textContent = calculator.total;
+            calculator.operator = button.textContent.trim();
+
         }
     })
 })
