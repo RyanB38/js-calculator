@@ -46,8 +46,14 @@ const display = document.querySelector(".display > h1");
 const numberKeys = document.querySelectorAll(".buttons > .number");
 numberKeys.forEach((button) =>{
     button.addEventListener("click", () => {
-        displayNumbers(button.textContent.trim());
-        console.log(display.textContent);
+        if(calculator.total == ""){
+            displayNumbers(button.textContent.trim());
+        }else if(calculator.total != "" && calculator.operator == "="){
+            clearCalculator();
+            display.textContent = ""
+            displayNumbers(button.textContent.trim());
+        }
+
     })
 })
 const operations = document.querySelectorAll(".buttons > .operation");
@@ -61,6 +67,7 @@ operations.forEach((button) => {
             calculator.num2 = display.textContent;
             calculator.total = doOperation(calculator.num1, calculator.num2, calculator.operator);
             display.textContent = calculator.total;
+            calculator.operator = "="
         }
     })
 })
